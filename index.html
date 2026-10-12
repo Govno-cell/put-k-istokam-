@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Александр Невский · Путь к истокам · НовГУ</title>
+<meta name="description" content="Информационный проект НовГУ «Путь к истокам»: памятник Александру Невскому в Великом Новгороде.">
+
+<style>
+  /* ============ ОБЩИЕ СТИЛИ ============ */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --blue-deep: #142a4a;
+    --blue: #1e3a63;
+    --gold: #c9a227;
+    --gold-light: #e6c65a;
+    --cream: #f7f4ec;
+    --text: #1f2430;
+    --text-soft: #4a5266;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.2;
+    color: var(--blue-deep);
+  }
+
+  a { color: var(--blue); }
+
+  /* ============ ШАПКА ============ */
+  header {
+    background: var(--blue-deep);
+    color: #fff;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    border-bottom: 3px solid var(--gold);
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    letter-spacing: .3px;
+  }
+
+  .logo {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--blue-deep);
+    display: flex; align-items: center; justify-content: center;
+    font-family: Georgia, serif;
+    font-weight: bold;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .brand-text { font-size: 15px; }
+  .brand-text small {
+    display: block;
+    font-weight: 400;
+    font-size: 12px;
+    opacity: .75;
+    letter-spacing: .5px;
+  }
+
+  .lang-switch {
+    display: flex;
+    gap: 6px;
+  }
+
+  .lang-switch button {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,.35);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: .2s;
+  }
+
+  .lang-switch button:hover { background: rgba(255,255,255,.12); }
+  .lang-switch button.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--blue-deep);
+  }
+
+  /* ============ ГЛАВНЫЙ БЛОК ============ */
+  .hero {
+    background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue) 100%);
+    color: #fff;
+    padding: 60px 20px 70px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(201,162,39,.15), transparent 45%),
+      radial-gradient(circle at 80% 70%, rgba(201,162,39,.12), transparent 45%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero .eyebrow {
+    color: var(--gold-light);
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+
+  .hero h1 {
+    font-size: clamp(28px, 6vw, 46px);
+    color: #fff;
+    margin-bottom: 14px;
+  }
+
+  .hero .sub {
+    color: rgba(255,255,255,.8);
+    font-size: 15px;
+    letter-spacing: .5px;
+  }
+
+  .hero .divider {
+    width: 70px; height: 3px;
+    background: var(--gold);
+    margin: 26px auto 0;
+    border-radius: 2px;
+  }
+
+  /* ============ КОНТЕНТ ============ */
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 20px 60px;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 30px 28px;
+    margin-bottom: 24px;
+    box-shadow: 0 6px 24px rgba(20,42,74,.06);
+    border: 1px solid rgba(20,42,74,.06);
+  }
+
+  .card h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .card h2 .icon {
+    width: 30px; height: 30px;
+    flex-shrink: 0;
+    color: var(--gold);
+  }
+
+  .card p {
+    color: var(--text-soft);
+    margin-bottom: 14px;
+    font-size: 16px;
+  }
+
+  .card p:last-child { margin-bottom: 0; }
+
+  .highlight {
+    color: var(--blue-deep);
+    font-weight: 600;
+  }
+
+  .quote {
+    border-left: 3px solid var(--gold);
+    padding: 4px 0 4px 16px;
+    font-style: italic;
+    color: var(--text-soft);
+    margin: 18px 0;
+  }
+
+  /* ============ АУДИО ============ */
+  .audio-box {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: linear-gradient(135deg, #f0f4fb, #e8eef8);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-top: 6px;
+    flex-wrap: wrap;
+  }
+
+  .play-btn {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: var(--blue-deep);
+    color: var(--gold);
+    border: none;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: .2s;
+  }
+
+  .play-btn:hover { background: var(--gold); color: var(--blue-deep); }
+  .play-btn svg { width: 22px; height: 22px; }
+
+  .audio-meta { flex: 1; min-width: 180px; }
+  .audio-meta .label {
+    font-size: 13px;
+    color: var(--text-soft);
+    margin-bottom: 4px;
+  }
+  .audio-meta .title {
+    font-weight: 600;
+    color: var(--blue-deep);
+  }
+
+  /* ============ КАРТА (заглушка) ============ */
+  .map-placeholder {
+    background: repeating-linear-gradient(45deg, #eef2f8, #eef2f8 12px, #e6ecf6 12px, #e6ecf6 24px);
+    border-radius: 12px;
+    padding: 40px 20px;
+    text-align: center;
+    color: var(--text-soft);
+    border: 2px dashed rgba(20,42,74,.15);
+  }
+
+  .map-placeholder .soon {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--blue-deep);
+    font-weight: 700;
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  /* ============ КНОПКИ ДЕЙСТВИЙ ============ */
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 6px;
+  }
+
+  .action {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 12px;
+    background: var(--blue-deep);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: .2s;
+    border: 2px solid var(--blue-deep);
+  }
+
+  .action:hover {
+    background: var(--gold);
+    color: var(--blue-deep);
+    border-color: var(--gold);
+  }
+
+  .action svg { width: 24px; height: 24px; flex-shrink: 0; }
+
+  /* ============ ПОДВАЛ ============ */
+  footer {
+    background: var(--blue-deep);
+    color: rgba(255,255,255,.75);
+    text-align: center;
+    padding: 32px 20px;
+    font-size: 14px;
+    border-top: 3px solid var(--gold);
+  }
+
+  footer .logo-line {
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  footer a { color: var(--gold-light); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  /* ============ МОБИЛЬНАЯ АДАПТАЦИЯ ============ */
+  @media (max-width: 520px) {
+    .actions { grid-template-columns: 1fr; }
+    .card { padding: 22px 18px; }
+    .hero { padding: 44px 16px 50px; }
+    header { padding: 12px 14px; }
+    .brand-text { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ ШАПКА ============ -->
+<header>
+  <div class="brand">
+    <div class="logo">Н</div>
+    <div class="brand-text">
+      Путь к истокам
+      <small>НовГУ · Великий Новгород</small>
+    </div>
+  </div>
+
+  <div class="lang-switch">
+    <button data-lang="ru" class="active">RU</button>
+    <button data-lang="en">EN</button>
+    <button data-lang="zh">中文</button>
+  </div>
+</header>
+
+<!-- ============ ГЛАВНЫЙ БЛОК ============ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow" data-i18n="eyebrow">Памятник · Набережная Волхова</div>
+    <h1 data-i18n="heroTitle">Александр Невский: князь, воин, святой</h1>
+    <p class="sub" data-i18n="heroSub">1985 год · скульптор Юрий Чернов · высота 4 метра</p>
+    <div class="divider"></div>
+  </div>
+</section>
+
+<!-- ============ КОНТЕНТ ============ -->
+<main>
+
+  <!-- Рассказ -->
+  <article class="card">
+    <h2>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      <span data-i18n="storyTitle">О памятнике</span>
+    </h2>
+    <p data-i18n="p1">Этот четырёхметровый князь встречает вас на набережной, названной его именем. Он стоит здесь с 20 января 1985 года — в день 41-й годовщины освобождения Новгорода от фашистов. Скульптор Юрий Чернов работал над монументом <span class="highlight">семь лет</span>, изучая древнерусские иконы и лики святых. Портретов Александра не сохранилось, поэтому Чернов создал <span class="highlight">образ-символ</span>: мудрого правителя и защитника, а не просто воина.</p>
+    <p data-i18n="p2">Присмотритесь: князь держит шлем в руке, меч — на поясе, а плащ за спиной развевается, <span class="highlight">словно крылья</span>. Левая рука открыта ладонью к городу — жест мира и уверенности. Не случайно памятник появился именно здесь, рядом с церковью Бориса и Глеба: это место древней пристани, откуда князь уходил в походы.</p>
+    <p data-i18n="p3">Александр Невский княжил в Новгороде в XIII веке. Он разбил шведов на Неве и рыцарей на Чудском озере, умел договариваться с Ордой и защищал русские земли. Церковь причислила его к лику святых. А для новгородцев он — свой, «наш князь», который и сегодня смотрит на Волхов.</p>
+  </article>
+
+  <!-- Аудио -->
+  <article class="card">
+    <h2>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+      <span data-i18n="audioTitle">Аудиогид</span>
+    </h2>
+    <div class="audio-box">
+      <button class="play-btn" onclick="toggleAudio()" aria-label="Play">
+        <svg id="playIcon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="audio-meta">
+        <div class="label" data-i18n="audioLabel">Продолжительность · 2 мин</div>
+        <div class="title" data-i18n="audioName">Прогулка у памятника</div>
+      </div>
+    </div>
+    <!-- ЗАМЕНИ src на свой файл, когда запишешь аудио -->
+    <audio id="audioPlayer" src="audio/nevsky-ru.mp3" preload="none"></audio>
+  </article>
+
+  <!-- Карта -->
+  <article class="card">
+    <h2>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span data-i18n="mapTitle">Что рядом</span>
+    </h2>
+    <div class="map-placeholder">
+      <div class="soon" data-i18n="mapSoon">Скоро</div>
+      <p data-i18n="mapText">Здесь появится интерактивная карта с другими памятниками проекта «Путь к истокам».</p>
+    </div>
+  </article>
+
+  <!-- Кнопки -->
+  <article class="card">
+    <h2>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+      <span data-i18n="shareTitle">Поделиться</span>
+    </h2>
+    <div class="actions">
+      <a class="action" href="#" onclick="sharePage(event)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v13"/></svg>
+        <span data-i18n="shareBtn">Отправить другу</span>
+      </a>
+      <a class="action" href="https://www.novsu.ru" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9"/><path d="M5 10v10h14V10"/></svg>
+        <span data-i18n="siteBtn">Сайт НовГУ</span>
+      </a>
+    </div>
+  </article>
+
+</main>
+
+<!-- ============ ПОДВАЛ ============ -->
+<footer>
+  <div class="logo-line">Проект «Путь к истокам»</div>
+  <p data-i18n="footerText">Информация подготовлена студентами НовГУ имени Ярослава Мудрого.</p>
+  <p style="margin-top:8px;">
+    <a href="https://www.novsu.ru" target="_blank" rel="noopener">novsu.ru</a>
+  </p>
+</footer>
+
+<script>
+/* ============ ПЕРЕВОДЫ ============ */
+const translations = {
+  ru: {
+    eyebrow: "Памятник · Набережная Волхова",
+    heroTitle: "Александр Невский: князь, воин, святой",
+    heroSub: "1985 год · скульптор Юрий Чернов · высота 4 метра",
+    storyTitle: "О памятнике",
+    p1: "Этот четырёхметровый князь встречает вас на набережной, названной его именем. Он стоит здесь с 20 января 1985 года — в день 41-й годовщины освобождения Новгорода от фашистов. Скульптор Юрий Чернов работал над монументом семь лет, изучая древнерусские иконы и лики святых. Портретов Александра не сохранилось, поэтому Чернов создал образ-символ: мудрого правителя и защитника, а не просто воина.",
+    p2: "Присмотритесь: князь держит шлем в руке, меч — на поясе, а плащ за спиной развевается, словно крылья. Левая рука открыта ладонью к городу — жест мира и уверенности. Не случайно памятник появился именно здесь, рядом с церковью Бориса и Глеба: это место древней пристани, откуда князь уходил в походы.",
+    p3: "Александр Невский княжил в Новгороде в XIII веке. Он разбил шведов на Неве и рыцарей на Чудском озере, умел договариваться с Ордой и защищал русские земли. Церковь причислила его к лику святых. А для новгородцев он — свой, «наш князь», который и сегодня смотрит на Волхов.",
+    audioTitle: "Аудиогид",
+    audioLabel: "Продолжительность · 2 мин",
+    audioName: "Прогулка у памятника",
+    mapTitle: "Что рядом",
+    mapSoon: "Скоро",
+    mapText: "Здесь появится интерактивная карта с другими памятниками проекта «Путь к истокам».",
+    shareTitle: "Поделиться",
+    shareBtn: "Отправить другу",
+    siteBtn: "Сайт НовГУ",
+    footerText: "Информация подготовлена студентами НовГУ имени Ярослава Мудрого."
+  },
+  en: {
+    eyebrow: "Monument · Volkhov Embankment",
+    heroTitle: "Alexander Nevsky: prince, warrior, saint",
+    heroSub: "1985 · sculptor Yuri Chernov · 4 meters tall",
+    storyTitle: "About the monument",
+    p1: "This four-meter prince greets you on the embankment named after him. He has stood here since January 20, 1985 — the 41st anniversary of Novgorod's liberation from the Nazis. Sculptor Yuri Chernov worked on the monument for seven years, studying Old Russian icons and images of saints. No portraits of Alexander survive, so Chernov created a symbol: a wise ruler and defender, not merely a warrior.",
+    p2: "Look closely: the prince holds his helmet in his hand, his sword at his belt, and his cloak billows behind him like wings. His left hand is open, palm toward the city — a gesture of peace and confidence. It is no accident that the monument stands here, next to the Church of Boris and Gleb: this is the site of the ancient pier from which the prince set out on his campaigns.",
+    p3: "Alexander Nevsky ruled in Novgorod in the 13th century. He defeated the Swedes on the Neva and the knights on Lake Peipus, negotiated with the Horde, and defended Russian lands. The Church canonized him as a saint. For Novgorodians, he is \"our prince\", who still gazes upon the Volkhov today.",
+    audioTitle: "Audio guide",
+    audioLabel: "Duration · 2 min",
+    audioName: "A walk by the monument",
+    mapTitle: "Nearby",
+    mapSoon: "Coming soon",
+    mapText: "An interactive map with other monuments of the \"Path to the Origins\" project will appear here.",
+    shareTitle: "Share",
+    shareBtn: "Send to a friend",
+    siteBtn: "NovSU website",
+    footerText: "Prepared by students of Yaroslav-the-Wise Novgorod State University."
+  },
+  zh: {
+    eyebrow: "纪念碑 · 沃尔霍夫河堤",
+    heroTitle: "亚历山大·涅夫斯基：公爵、战士、圣徒",
+    heroSub: "1985年 · 雕塑家尤里·切尔诺夫 · 高4米",
+    storyTitle: "关于纪念碑",
+    p1: "这位四米高的公爵在以他命名的河堤上迎接您。自1985年1月20日起，他便矗立于此——那是诺夫哥罗德从法西斯手中解放41周年纪念日。雕塑家尤里·切尔诺夫耗时七年创作了这座纪念碑，其间研究了古罗斯圣像和圣徒形象。亚历山大的画像未能留存，因此切尔诺夫创造的是一个象征：一位睿智的统治者和守护者，而非单纯的战士。",
+    p2: "请细看：公爵手持头盔，腰间佩剑，身后披风如翼飘扬。他左手张开，掌心朝向城市——这是和平与自信的姿态。纪念碑矗立于此并非偶然，它紧邻鲍里斯和格列布教堂：这里曾是古老的码头，公爵从此处出征。",
+    p3: "亚历山大·涅夫斯基13世纪在诺夫哥罗德执政。他在涅瓦河击败瑞典人，在楚德湖击败骑士团，善于与金帐汗国周旋，保卫罗斯土地。教会封他为圣徒。对诺夫哥罗德人而言，他是「我们的公爵」，至今仍凝望着沃尔霍夫河。",
+    audioTitle: "语音导览",
+    audioLabel: "时长 · 2分钟",
+    audioName: "纪念碑漫步",
+    mapTitle: "附近景点",
+    mapSoon: "敬请期待",
+    mapText: "此处将出现「寻根之路」项目其他纪念碑的互动地图。",
+    shareTitle: "分享",
+    shareBtn: "发送给朋友",
+    siteBtn: "诺夫哥罗德国立大学官网",
+    footerText: "由雅罗斯拉夫智者诺夫哥罗德国立大学学生制作。"
+  }
+};
+
+/* ============ ПЕРЕКЛЮЧЕНИЕ ЯЗЫКА ============ */
+function setLang(lang) {
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[lang][key]) el.textContent = translations[lang][key];
+  });
+  document.querySelectorAll('.lang-switch button').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+  localStorage.setItem('lang', lang);
+}
+
+document.querySelectorAll('.lang-switch button').forEach(btn => {
+  btn.addEventListener('click', () => setLang(btn.dataset.lang));
+});
+
+/* При загрузке — выбираем сохранённый язык или русский */
+setLang(localStorage.getItem('lang') || 'ru');
+
+/* ============ АУДИО ============ */
+function toggleAudio() {
+  const audio = document.getElementById('audioPlayer');
+  const icon = document.getElementById('playIcon');
+  if (audio.paused) {
+    audio.play().catch(() => alert('Аудиофайл ещё не добавлен.'));
+    icon.innerHTML = '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>';
+  } else {
+    audio.pause();
+    icon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+  }
+}
+document.getElementById('audioPlayer').addEventListener('ended', () => {
+  document.getElementById('playIcon').innerHTML = '<path d="M8 5v14l11-7z"/>';
+});
+
+/* ============ ПОДЕЛИТЬСЯ ============ */
+function sharePage(e) {
+  e.preventDefault();
+  const data = { title: document.title, url: window.location.href };
+  if (navigator.share) {
+    navigator.share(data);
+  } else {
+    navigator.clipboard.writeText(window.location.href)
+      .then(() => alert('Ссылка скопирована!'))
+      .catch(() => alert('Скопируйте ссылку вручную: ' + window.location.href));
+  }
+}
+</script>
+</body>
+</html>
