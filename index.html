@@ -57,15 +57,12 @@
     letter-spacing: .3px;
   }
 
-  .logo {
-    width: 42px; height: 42px;
-    border-radius: 50%;
-    background: var(--gold);
-    color: var(--blue-deep);
-    display: flex; align-items: center; justify-content: center;
-    font-family: Georgia, serif;
-    font-weight: bold;
-    font-size: 18px;
+    .logo-img {
+    height: 42px; /* Высота под размер шапки */
+    width: auto; /* Ширина подстроится сама */
+    background: #ffffff; /* Белый фон, чтобы логотип не сливался с тёмной шапкой */
+    padding: 4px 8px; /* Отступы внутри белой плашки */
+    border-radius: 6px; /* Закругляем углы плашки */
     flex-shrink: 0;
   }
 
@@ -335,7 +332,7 @@
 <!-- ============ ШАПКА ============ -->
 <header>
   <div class="brand">
-    <div class="logo">Н</div>
+    <img src="logo.png" class="logo-img" alt="Логотип НовГУ">
     <div class="brand-text">
       Путь к истокам
       <small>НовГУ · Великий Новгород</small>
